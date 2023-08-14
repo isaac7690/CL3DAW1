@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Index CL3 Isaac</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"
+		type="text/css" />
+</head>
+
+<body>
+
+	<div class="container my-2">
+		<h1>Lista de Productos</h1>
+		<a th:href = "@{/nuevoProducto}" class ="btn btn-primary btn-sm mb-3">Nuevo Producto</a>
+		
+		<table border="1" class="table table-striped table-responsive-md">
+		  <thead>
+		    <tr>
+		      <th>Producto</th>
+		      <th>Precio</th>
+		      <th>Cantidad</th>
+		      <th>Acciones</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr th:each="producto : ${listaProductos}">
+		      <td th:text="${producto.nombre}"></td>
+		      <td th:text="${producto.precio}"></td>
+		      <td th:text="${producto.cantidad}"></td>
+		      <td>
+		        <a th:href = "@{/actualizaProducto/{id}(id = ${producto.idProducto})}" class = "btn btn-primary">Editar</a>
+		        <a th:href = "@{/eliminarProducto/{id}(id = ${producto.idProducto})}" class = "btn btn-danger">Eliminar</a>
+		      </td>
+		    </tr >
+		  </tbody>
+		</table>
+	</div>
+</body>
+
+</html>
